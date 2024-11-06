@@ -26,12 +26,12 @@ The data pipeline consists of the following stages:
 
 Essential Folders:
 
-logs/: For storing Airflow logs.
-plugins/: For any Airflow plugins.
-config/: For storing configuration files needed by Airflow.
-dags/.env/: For securely storing credentials, such as Confluent Kafka and MongoDB authentication details, along with the Kafka topic name.
-Docker and Docker Compose: Ensure these are installed to run Airflow.
-Docker Service Naming: Avoid using underscores (_) in Docker service names, as they may cause issues with Airflow connections.
+1. logs/: For storing Airflow logs.
+2. plugins/: For any Airflow plugins.
+3. config/: For storing configuration files needed by Airflow.
+4. dags/.env/: For securely storing credentials, such as Confluent Kafka and MongoDB authentication details, along with the Kafka topic name.
+5. Docker: Ensure these are installed to run Airflow.
+6. Docker Service Naming: Avoid using underscores (_) in Docker service names, as they may cause issues with Airflow connections.
 MongoDB: Set up MongoDB for data storage.
 
 ## Running the Pipeline
