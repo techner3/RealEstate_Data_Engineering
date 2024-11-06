@@ -12,6 +12,8 @@ Data Processing: PySpark reads the Kafka stream, processes the data, and prepare
 Data Storage: The processed data is stored in MongoDB, where it can be accessed and queried for further analysis or reporting.
 Workflow Orchestration: Airflow orchestrates each stage of the pipeline, ensuring smooth data flow from scraping to storage. The entire pipeline is triggered and managed using Airflow, allowing for scheduled data updates and monitoring.
 
+![](./images/flowchart.png)
+
 ## Key Technologies
 
 Web Scraping: BeautifulSoup and requests for data extraction from CommonFloor.com.
@@ -41,6 +43,7 @@ docker-compose build
 ```
 
 2. Start the Services:
+
 Start all services, including Airflow, Kafka, and any other dependencies.
 
 ```
@@ -48,6 +51,7 @@ docker-compose up -d
 ```
 
 3. Access the Airflow Web UI:
+
 Once the services are running, access the Airflow UI to monitor and trigger the DAGs.
 
 Default URL: http://localhost:8080
