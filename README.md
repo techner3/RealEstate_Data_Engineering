@@ -36,16 +36,16 @@ MongoDB: Set up MongoDB for data storage.
 
 1. Build Docker Containers (First-Time Setup Only):
 
-'''bash
+```
 docker-compose build
-'''
+```
 
 2. Start the Services:
 Start all services, including Airflow, Kafka, and any other dependencies.
 
-'''bash
+```
 docker-compose up -d
-'''
+```
 
 3. Access the Airflow Web UI:
 Once the services are running, access the Airflow UI to monitor and trigger the DAGs.
@@ -57,14 +57,14 @@ In the Airflow UI, locate and trigger the DAG associated with this pipeline.
 This will start the sequence of tasks, from scraping to processing and storing data in MongoDB.
 Stop the Services (When Done):
 
-'''bash
+```
 docker-compose down
-'''
+```
 
 4. Rebuild (If Necessary):
 
 If you make changes to the Docker configuration, rebuild the containers:
 
-'''bash
+```
 docker-compose build
-'''
+```
