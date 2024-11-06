@@ -16,11 +16,11 @@ The data pipeline consists of the following stages:
 
 ## Key Technologies
 
-Web Scraping: BeautifulSoup and requests for data extraction from CommonFloor.com.
-Data Streaming: Confluent Kafka for scalable data streaming.
-Data Processing: PySpark for stream processing and data transformation.
-Data Storage: MongoDB as a NoSQL database for structured and unstructured data storage.
-Orchestration: Apache Airflow to manage the pipeline and automate data workflows.
+1. Web Scraping: BeautifulSoup and requests for data extraction from CommonFloor.com.
+2. Data Streaming: Confluent Kafka for scalable data streaming.
+3. Data Processing: PySpark for stream processing and data transformation.
+4. Data Storage: MongoDB as a NoSQL database for structured and unstructured data storage.
+5. Orchestration: Apache Airflow to manage the pipeline and automate data workflows.
 
 ## Pre-requisites
 
