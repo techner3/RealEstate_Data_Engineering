@@ -6,11 +6,11 @@ This project builds an end-to-end data pipeline to gather, process, and store re
 
 The data pipeline consists of the following stages:
 
-Data Collection: Web scraping is used to extract real estate listings from CommonFloor.com. This data includes property details such as location, price, size, and other relevant attributes.
-Data Streaming: The scraped data is serialized and sent to Confluent Kafka in real-time for efficient, scalable data ingestion.
-Data Processing: PySpark reads the Kafka stream, processes the data, and prepares it for storage. This step may include transformations, filtering, and enrichment of the raw data.
-Data Storage: The processed data is stored in MongoDB, where it can be accessed and queried for further analysis or reporting.
-Workflow Orchestration: Airflow orchestrates each stage of the pipeline, ensuring smooth data flow from scraping to storage. The entire pipeline is triggered and managed using Airflow, allowing for scheduled data updates and monitoring.
+1. Data Collection: Web scraping is used to extract real estate listings from CommonFloor.com. This data includes property details such as location, price, size, and other relevant attributes.\n
+2. Data Streaming: The scraped data is serialized and sent to Confluent Kafka in real-time for efficient, scalable data ingestion.
+3. Data Processing: PySpark reads the Kafka stream, processes the data, and prepares it for storage. This step may include transformations, filtering, and enrichment of the raw data.
+4. Data Storage: The processed data is stored in MongoDB, where it can be accessed and queried for further analysis or reporting.
+5. Workflow Orchestration: Airflow orchestrates each stage of the pipeline, ensuring smooth data flow from scraping to storage. The entire pipeline is triggered and managed using Airflow, allowing for scheduled data updates and monitoring.
 
 ![](./images/flowchart.png)
 
