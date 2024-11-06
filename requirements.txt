@@ -1,0 +1,6 @@
+pandas
+python-dotenv
+pyspark==3.5.3
+apache-airflow
+beautifulsoup4==4.12.3
+apache-airflow-providers-apache-spark
