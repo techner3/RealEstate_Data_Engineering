@@ -30,7 +30,6 @@ class Scraping_CommonFloor:
         try:
             response = requests.get(url,headers=self.headers)
             if response.status_code==200:
-                features_list=dict()
                 content = response.content
                 soup = BeautifulSoup(content,"html.parser")
                 return soup
@@ -173,11 +172,11 @@ def scrap_stream(topic):
 
     try:
         scrap_obj=Scraping_CommonFloor()
-        kafka_obj=Producer(topic)
-        producer=kafka_obj.return_producer()
-        
         df=pd.DataFrame(scrap_obj.gather_data())
         df.fillna("")
+
+        kafka_obj=Producer(topic)
+        producer=kafka_obj.return_producer()
 
         for index, row in df.iterrows():
 

@@ -28,17 +28,17 @@ def data_dump():
         StructField("Listed on", StringType(), True),
         StructField("Brokerage terms", StringType(), True),
         StructField("Bachelors Allowed", StringType(), True),
-        StructField("Security Deposit", IntegerType(), True),
+        StructField("Security Deposit", StringType(), True),
         StructField("Pet Allowed", StringType(), True),
         StructField("Non Vegetarian", StringType(), True),
         StructField("Super Built-Up Area", StringType(), True),
         StructField("Carpet Area", StringType(), True),
         StructField("Bedrooms", StringType(), True),
-        StructField("Bathrooms", FloatType(), True),
+        StructField("Bathrooms", StringType(), True),
         StructField("ID", StringType(), True),
         StructField("City", StringType(), True),
         StructField("State", StringType(), True),
-        StructField("Year", IntegerType(), True),
+        StructField("Year", StringType(), True),
         StructField("Rent", StringType(), True),
         StructField("Amenities", StringType(), True),
         StructField("Address", StringType(), True),
@@ -78,10 +78,12 @@ def data_dump():
             .withColumn("Carpet Area", when(col("Carpet Area").contains("("),regexp_replace(col("Carpet Area"), r"\(.*?\)", "")).otherwise(col("Carpet Area")))\
             .withColumn("Super Built-Up Area", when(col("Super Built-Up Area").contains("sq.ft"),trim(regexp_replace(col("Super Built-Up Area"), r"sq.ft", ""))).otherwise(trim(col("Super Built-Up Area"))))\
             .withColumn("Carpet Area", when(col("Carpet Area").contains("sq.ft"),trim(regexp_replace(col("Carpet Area"), r"sq.ft", ""))).otherwise(trim(col("Carpet Area"))))\
-            .withColumn("Amenities", from_json(col("Amenities"), "array<string>"))
+            .withColumn("Amenities", from_json(col("Amenities"), "array<string>"))\
+            .withColumn("Rent",when(col("Rent").contains(","),trim(regexp_replace(col("Rent"), r",", "")))\
+                .otherwise(trim(col("Rent"))))
 
         for column_name in columns_to_convert:
-            df = df.withColumn(column_name, col(column_name).cast("int"))
+            df = df.withColumn(column_name, trim(col(column_name)).cast("int"))
 
         query = df.writeStream \
         .outputMode("append") \
@@ -89,7 +91,7 @@ def data_dump():
         .option("checkpointLocation", "/tmp/mongo_db_checkpoint10") \
         .option('spark.mongodb.connection.uri',os.getenv('mongob_db_connection') ) \
         .option('spark.mongodb.database', 'real_estate') \
-        .option('spark.mongodb.collection', 'common_floor') \
+        .option('spark.mongodb.collection', 'commonfloor') \
         .option("truncate", False) \
         .start()
         print("Write successfull")
